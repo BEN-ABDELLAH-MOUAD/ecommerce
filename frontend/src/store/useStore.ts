@@ -47,7 +47,7 @@ export const useAuthStore = create<AuthState>()(
       
       login: async (email: string, password: string) => {
         try {
-          const response = await fetch('http://localhost:3004/auth/login', {
+          const response = await fetch('http://localhost:3005/auth/login', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ export const useAuthStore = create<AuthState>()(
 
       register: async (email: string, password: string) => {
         try {
-          const response = await fetch('http://localhost:3004/auth/register', {
+          const response = await fetch('http://localhost:3005/auth/register', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -199,7 +199,7 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
     set({ loading: true, error: null })
     try {
       const { token } = useAuthStore.getState()
-      const response = await fetch('http://localhost:3004/products', {
+      const response = await fetch('http://localhost:3005/products', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -219,7 +219,7 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
   createProduct: async (product) => {
     try {
       const { token } = useAuthStore.getState()
-      const response = await fetch('http://localhost:3004/products', {
+      const response = await fetch('http://localhost:3005/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -241,7 +241,7 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
   updateProduct: async (id, product) => {
     try {
       const { token } = useAuthStore.getState()
-      const response = await fetch(`http://localhost:3004/products/${id}`, {
+      const response = await fetch(`http://localhost:3005/products/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -263,7 +263,7 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
   deleteProduct: async (id) => {
     try {
       const { token } = useAuthStore.getState()
-      const response = await fetch(`http://localhost:3004/products/${id}`, {
+      const response = await fetch(`http://localhost:3005/products/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
